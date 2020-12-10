@@ -39,7 +39,7 @@ class UDSchedule
         })->each(function($expression){
             $schedulable_type = $expression->getSchedulable();
             $schedulable = new $schedulable_type;
-            $schedulable->sendUDScheduled($expression->scheduler);
+            $schedulable->doUDScheduled($expression->scheduler);
         });
     }
 }

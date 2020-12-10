@@ -6,5 +6,5 @@ namespace Futur\UDSchedule\Interfaces;
 
 interface UDSchedulable
 {
-    public function sendUDScheduled(UDSchedulerInterface $UDScheduler);
+    public function doUDScheduled(UDSchedulerInterface $UDScheduler);
 }
