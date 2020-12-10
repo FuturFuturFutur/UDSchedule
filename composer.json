@@ -1,0 +1,29 @@
+{
+    "name": "futur/udschedule",
+    "description": "UserDefinableSchedule allows you to create user defined schedule tasks",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Futur Futur",
+            "email": "futur@futurfuturfutur.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.3|^8.0",
+        "laravel/framework": "^8.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Futur\\UDSchedule\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Futur\\UDSchedule\\UDScheduleServiceProvider"
+            ]
+        }
+    }
+}
