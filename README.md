@@ -1,7 +1,7 @@
-###UDSchedule
+### UDSchedule
 User Definable Schedule is the laravel package which allows you to create user defined schedule tasks.
 ```Futur with love <3```
-##Installation
+## Installation
 Install via composer <br>
 ```composer require futur/udschedule```
 
@@ -42,7 +42,7 @@ class Report <u><b>implements UDSchedulable</b></u>
 }
 </pre>
 
-##Usage
+## Usage
 After installation, everything you need is setting user defined schedules with
 ```
 $scheduler->setUDSchedule(string $schedulable, string $type, string $value = null);
