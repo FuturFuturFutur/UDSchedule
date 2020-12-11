@@ -16,4 +16,30 @@ class SetUDScheduleTest extends TestCase
 
         $this->assertTrue(! $scheduler->expressions->isEmpty());
     }
+
+    public function testSetUDScheduleWithWrongType()
+    {
+        $scheduler = Scheduler::first();
+
+        try {
+            $scheduler->setUDSchedule(UDScheduledObject::class, 'wrong', 2);
+        }catch (\Exception $exception){
+            $this->assertTrue(
+                'Wrong schedule type' === $exception->getMessage()
+            );
+        }
+    }
+
+    public function testSetUDScheduleWithWrongValue()
+    {
+        $scheduler = Scheduler::first();
+
+        try {
+            $scheduler->setUDSchedule(UDScheduledObject::class, 'weekly', 50);
+        }catch (\Exception $exception){
+            $this->assertTrue(
+                'Wrong value range' === $exception->getMessage()
+            );
+        }
+    }
 }
