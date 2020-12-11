@@ -3,9 +3,8 @@
 
 namespace Futur\UDSchedule\Traits;
 
-
 use Futur\UDSchedule\Models\Expression;
-use Futur\UDSchedule\UDSchedule;
+use Futur\UDSchedule\Facades\UDSchedule;
 
 trait UDScheduler
 {
