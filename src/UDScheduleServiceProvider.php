@@ -15,7 +15,10 @@ class UDScheduleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Futur\UDSchedule\UDSchedule');
+//        $this->app->make('Futur\UDSchedule\UDSchedule');
+        $this->app->bind('UDSchedule', function($app) {
+            return new UDSchedule();
+        });
     }
 
     /**
