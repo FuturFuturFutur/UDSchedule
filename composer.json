@@ -19,11 +19,21 @@
             "Futur\\UDSchedule\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Futur\\UDSchedule\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
                 "Futur\\UDSchedule\\UDScheduleServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4 || ^9.0",
+        "orchestra/testbench": "9999999-dev",
+        "laravel/legacy-factories": "1.x-dev"
     }
 }
