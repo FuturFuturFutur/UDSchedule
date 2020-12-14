@@ -21,7 +21,7 @@ class ListenUDScheduledTest extends TestCase
         ]));
 
         ob_start();
-        UDSchedule::listenExpressions();
+        UDSchedule::listenScheduled();
         $result = ob_get_contents();
         ob_end_clean();
 
@@ -39,7 +39,7 @@ class ListenUDScheduledTest extends TestCase
         ]));
 
         ob_start();
-        UDSchedule::listenExpressions();
+        UDSchedule::listenScheduled();
         $result = ob_get_contents();
         ob_end_clean();
 
