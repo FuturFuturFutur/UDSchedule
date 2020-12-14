@@ -5,7 +5,7 @@ namespace Futur\UDSchedule\Services;
 
 use Futur\UDSchedule\Interfaces\UDScheduleBuilderInterface;
 use Futur\UDSchedule\Interfaces\UDSchedulerInterface;
-use Futur\UDSchedule\Models\Expression;
+use Futur\UDSchedule\Models\UDScheduledExpression;
 
 class UDScheduleBuilder implements UDScheduleBuilderInterface
 {
@@ -52,11 +52,11 @@ class UDScheduleBuilder implements UDScheduleBuilderInterface
 
     private function setSchedule()
     {
-        $expression = new Expression([
+        $expression = new UDScheduledExpression([
             'expression' => $this->expression,
             'schedulable' => $this->schedulable,
         ]);
 
-        $this->scheduler->expressions()->save($expression);
+        $this->scheduler->udScheduledExpressions()->save($expression);
     }
 }

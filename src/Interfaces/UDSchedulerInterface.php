@@ -6,5 +6,5 @@ namespace Futur\UDSchedule\Interfaces;
 
 interface UDSchedulerInterface
 {
-    public function expressions();
+    public function udScheduledExpressions();
 }

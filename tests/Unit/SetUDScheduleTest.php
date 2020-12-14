@@ -17,7 +17,7 @@ class SetUDScheduleTest extends TestCase
             ->withSchedulable(UDScheduledObject::class)
             ->monthly(3);
 
-        $this->assertTrue(! $scheduler->expressions->isEmpty());
+        $this->assertTrue(! $scheduler->udScheduledExpressions->isEmpty());
     }
 
 

@@ -5,17 +5,17 @@ namespace Futur\UDSchedule\Services;
 
 
 use Futur\UDSchedule\Interfaces\UDScheduleListenerInterface;
-use Futur\UDSchedule\Models\Expression;
+use Futur\UDSchedule\Models\UDScheduledExpression;
 
 class UDScheduleListener implements UDScheduleListenerInterface
 {
     public function listen()
     {
-        Expression::all()->filter(function($expression)
+        UDScheduledExpression::all()->filter(function($expression)
         {
             return $expression->isDue();
         })->each(function($expression){
-            $schedulable_type = $expression->getSchedulable();
+            $schedulable_type = $expression->schedulable;
             try {
                 $schedulable = new $schedulable_type;
             }catch (\Exception $exception){

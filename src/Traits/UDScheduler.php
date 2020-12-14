@@ -3,13 +3,13 @@
 
 namespace Futur\UDSchedule\Traits;
 
-use Futur\UDSchedule\Models\Expression;
+use Futur\UDSchedule\Models\UDScheduledExpression;
 use Futur\UDSchedule\Facades\UDSchedule;
 
 trait UDScheduler
 {
-    public function expressions()
+    public function udScheduledExpressions()
     {
-        return $this->morphMany(Expression::class, 'scheduler');
+        return $this->morphMany(UDScheduledExpression::class, 'scheduler');
     }
 }

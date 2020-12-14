@@ -6,7 +6,7 @@ namespace Futur\UDSchedule;
 use Futur\UDSchedule\Interfaces\UDScheduleBuilderInterface;
 use Futur\UDSchedule\Interfaces\UDScheduleListenerInterface;
 use Futur\UDSchedule\Interfaces\UDSchedulerInterface;
-use Futur\UDSchedule\Models\Expression;
+use Futur\UDSchedule\Models\UDScheduledExpression;
 use Futur\UDSchedule\Services\UDScheduleBuilder;
 
 class UDSchedule

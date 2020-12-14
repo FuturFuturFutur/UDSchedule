@@ -2,6 +2,7 @@
 
 namespace Futur\UDSchedule\Models;
 
+use App\Models\User;
 use Cron\CronExpression;
 use Illuminate\Console\Scheduling\ManagesFrequencies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +22,7 @@ class UDScheduledExpression extends Model
         return $this->morphTo();
     }
 
-    public function getSchedulable()
+    public function schedulable()
     {
         return $this->schedulable;
     }
