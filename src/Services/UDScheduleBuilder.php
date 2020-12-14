@@ -1,0 +1,62 @@
+<?php
+
+
+namespace Futur\UDSchedule\Services;
+
+use Futur\UDSchedule\Interfaces\UDScheduleBuilderInterface;
+use Futur\UDSchedule\Interfaces\UDSchedulerInterface;
+use Futur\UDSchedule\Models\Expression;
+
+class UDScheduleBuilder implements UDScheduleBuilderInterface
+{
+    /**
+     * @var ExpressionGenerator
+     */
+    private ExpressionGenerator $generator;
+
+    private UDSchedulerInterface $scheduler;
+    private string $schedulable;
+
+    private string $expression;
+
+    public function __construct(ExpressionGenerator $generator)
+    {
+        $this->generator = $generator;
+    }
+
+    public function forScheduler(UDSchedulerInterface $scheduler): UDScheduleBuilderInterface
+    {
+        $this->scheduler = $scheduler;
+        return $this;
+    }
+
+    public function withSchedulable(string $schedulable): UDScheduleBuilderInterface
+    {
+        $this->schedulable = $schedulable;
+        return $this;
+    }
+
+    public function monthly(string $value)
+    {
+        $this->expression = $this->generator->generate('monthly', $value);
+
+        $this->setSchedule();
+    }
+
+    public function weekly(string $value)
+    {
+        $this->expression = $this->generator->generate('weekly', $value);
+
+        $this->setSchedule();
+    }
+
+    private function setSchedule()
+    {
+        $expression = new Expression([
+            'expression' => $this->expression,
+            'schedulable' => $this->schedulable,
+        ]);
+
+        $this->scheduler->expressions()->save($expression);
+    }
+}
