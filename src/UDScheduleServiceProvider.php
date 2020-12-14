@@ -2,7 +2,11 @@
 
 namespace Futur\UDSchedule;
 
-use Futur\UDSchedule\Models\Expression;
+use Futur\UDSchedule\Interfaces\UDScheduleBuilderInterface;
+use Futur\UDSchedule\Interfaces\UDScheduleListenerInterface;
+use Futur\UDSchedule\Services\ExpressionGenerator;
+use Futur\UDSchedule\Services\UDScheduleBuilder;
+use Futur\UDSchedule\Services\UDScheduleListener;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,10 +19,9 @@ class UDScheduleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-//        $this->app->make('Futur\UDSchedule\UDSchedule');
-        $this->app->bind('UDSchedule', function($app) {
-            return new UDSchedule();
-        });
+        $this->app->bind(UDScheduleBuilderInterface::class, UDScheduleBuilder::class);
+        $this->app->bind(UDScheduleListenerInterface::class, UDScheduleListener::class);
+        $this->app->bind('UDSchedule', UDSchedule::class);
     }
 
     /**
@@ -33,7 +36,7 @@ class UDScheduleServiceProvider extends ServiceProvider
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
             $schedule->call(function () {
-                UDSchedule::listenExpressions();
+                UDSchedule::listenScheduled();
             })->everyMinute();
         });
     }
