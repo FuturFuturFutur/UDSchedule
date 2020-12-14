@@ -9,15 +9,12 @@ use Futur\UDSchedule\Models\UDScheduledExpression;
 
 class UDScheduleBuilder implements UDScheduleBuilderInterface
 {
-    /**
-     * @var ExpressionGenerator
-     */
-    private ExpressionGenerator $generator;
+    private $generator;
 
-    private UDSchedulerInterface $scheduler;
-    private string $schedulable;
+    private $scheduler;
+    private $schedulable;
 
-    private string $expression;
+    private $expression;
 
     public function __construct(ExpressionGenerator $generator)
     {

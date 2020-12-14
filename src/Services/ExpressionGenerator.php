@@ -6,7 +6,7 @@ namespace Futur\UDSchedule\Services;
 
 class ExpressionGenerator
 {
-    private array $templates = [
+    private $templates = [
         'monthly' => [
             'value' => true,
             'temp' => '0 12 %d * *',
