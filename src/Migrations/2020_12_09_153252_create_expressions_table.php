@@ -12,7 +12,7 @@ class CreateExpressionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('expressions', function (Blueprint $table) {
+        Schema::create('udscheduled_expressions', function (Blueprint $table) {
             $table->id();
             $table->integer('scheduler_id');
             $table->string('scheduler_type');
@@ -29,6 +29,6 @@ class CreateExpressionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expressions');
+        Schema::dropIfExists('udscheduled_expressions');
     }
 }

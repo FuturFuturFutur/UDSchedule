@@ -2,16 +2,17 @@
 
 namespace Futur\UDSchedule\Models;
 
-use App\Models\User;
 use Cron\CronExpression;
 use Illuminate\Console\Scheduling\ManagesFrequencies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
-class Expression extends Model
+class UDScheduledExpression extends Model
 {
     use HasFactory, ManagesFrequencies;
+
+    protected $table = 'udscheduled_expressions';
 
     protected $fillable = ['expression', 'schedulable'];
 
