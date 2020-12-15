@@ -27,7 +27,7 @@ class UDSchedule
         $this->UDScheduleListener = $UDScheduleListener;
     }
 
-    public function setSchedule() : UDScheduleBuilderInterface
+    public function schedule() : UDScheduleBuilderInterface
     {
         return $this->UDScheduleBuilder;
     }
