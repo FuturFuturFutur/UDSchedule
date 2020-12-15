@@ -18,6 +18,7 @@ class CreateUDScheduledExpressionsTable extends Migration
             $table->string('scheduler_type');
             $table->string('schedulable');
             $table->string('expression');
+            $table->string('timezone')->nullable();
             $table->timestamps();
         });
     }
