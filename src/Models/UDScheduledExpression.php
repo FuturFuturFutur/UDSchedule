@@ -27,12 +27,7 @@ class UDScheduledExpression extends Model
     }
 
     public function isDue(){
-        switch ($this->expression){
-            case 'LAST_DAY_OF_MONTH':
-                return gmdate('H:i t') == '12:00 ' . gmdate('d');
-            default:
-                $date = Carbon::now();
-                return CronExpression::factory($this->expression)->isDue($date->toDateTimeString());
-        }
+        $date = Carbon::now();
+        return CronExpression::factory($this->expression)->isDue($date->toDateTimeString());
     }
 }
