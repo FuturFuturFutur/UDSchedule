@@ -33,6 +33,14 @@ class UDScheduledExpression extends Model
             $date->setTimezone($this->timezone);
         }
 
+        if(strpos($this->expression, 'LAST_DAY_OF_MONTH') !== false){
+            $expression = explode(' ', $this->expression);
+            $lastDayOfMonth = (new Carbon('last day of last month'))
+                ->setTime($expression[1], $expression[0])
+                ->setTimezone($this->timezone);
+            return $lastDayOfMonth->equalTo($date);
+        }
+
         return CronExpression::factory($this->expression)->isDue($date->toDateTimeString());
     }
 }
