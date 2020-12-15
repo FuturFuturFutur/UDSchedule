@@ -4,7 +4,6 @@ namespace Futur\UDSchedule;
 
 use Futur\UDSchedule\Interfaces\UDScheduleBuilderInterface;
 use Futur\UDSchedule\Interfaces\UDScheduleListenerInterface;
-use Futur\UDSchedule\Services\ExpressionGenerator;
 use Futur\UDSchedule\Services\UDScheduleBuilder;
 use Futur\UDSchedule\Services\UDScheduleListener;
 use Illuminate\Console\Scheduling\Schedule;
