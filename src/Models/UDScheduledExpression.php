@@ -14,7 +14,7 @@ class UDScheduledExpression extends Model
 
     protected $table = 'udscheduled_expressions';
 
-    protected $fillable = ['expression', 'schedulable'];
+    protected $fillable = ['expression', 'schedulable', 'timezone'];
 
     public function scheduler()
     {
@@ -28,6 +28,11 @@ class UDScheduledExpression extends Model
 
     public function isDue(){
         $date = Carbon::now();
+
+        if ($this->timezone) {
+            $date->setTimezone($this->timezone);
+        }
+
         return CronExpression::factory($this->expression)->isDue($date->toDateTimeString());
     }
 }
