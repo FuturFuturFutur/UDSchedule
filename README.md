@@ -46,24 +46,85 @@ class Report <u><b>implements UDSchedulable</b></u>
 ## Usage
 After installation, everything you need is setting user defined schedules using UDSchedule facade:
 ```
-UDSchedule::setSchedule()
+UDSchedule::schedule()
             ->forScheduler($scheduler)
             ->withSchedulable(UDScheduledObject::class)
-            ->...;
+            ->...
+            ->set();
 ``` 
 
-Available schedule types:
-- <b>monthly</b> as a type and <b>any day of a month</b> as a value<br>
+Available schedule methods:
+- <b>monthly</b> with <b>any day of a month</b> as a value<br>
 ```
-UDSchedule::setSchedule()
+UDSchedule::schedule()
             ->forScheduler($scheduler)
             ->withSchedulable(UDScheduledObject::class)
-            ->monthly(23);
+            ->monthly(23)
+            ->set();
 ``` 
-- <b>weekly</b> as a type and <b>any day of a week</b> as a value, where 0 is for Sunday and 6 is for Saturday<br>
+- <b>weekly</b> with <b>any day of a week</b> as a value<br>
 ```
-UDSchedule::setSchedule()
+UDSchedule::schedule()
             ->forScheduler($scheduler)
             ->withSchedulable(UDScheduledObject::class)
-            ->weekly(5);
+            ->weekly('Sunday')
+            ->set();
+``` 
+- <b>daily</b> with <b>time (HH:MM)</b> as a value<br>
+```
+UDSchedule::schedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->daily('12:05')
+            ->set();
+``` 
+- <b>at</b> with <b>time (HH:MM)</b> as a value, to specify time of schedule<br>
+```
+UDSchedule::schedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->weekly('Monday')
+            ->at('14:23')
+            ->set();
+``` 
+- <b>weekdays</b><br>
+```
+UDSchedule::schedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->weekdays()
+            ->set();
+``` 
+- <b>weekends</b><br>
+```
+UDSchedule::schedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->weekends()
+            ->set();
+``` 
+- <b>lastDayOfMonth</b><br>
+```
+UDSchedule::schedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->lastDayOfMonth()
+            ->set();
+``` 
+- <b>custom</b> expression if you want to specify cron expression by your own<br>
+```
+UDSchedule::schedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->custom('00 23 * * *')
+            ->set();
+``` 
+- <b>timezone</b> specify timezone of user defining schedule<br>
+```
+UDSchedule::schedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->custom('00 23 * * *')
+            ->timezone('MST')
+            ->set();
 ``` 
