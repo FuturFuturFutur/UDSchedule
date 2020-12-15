@@ -11,7 +11,8 @@ trait HasExpressionGenerator
     public function monthly($dayOfMonth)
     {
         throw_if(
-            !is_numeric($dayOfMonth) || !preg_match("/[^1-31]/", $dayOfMonth),
+            !is_numeric($dayOfMonth)
+            || ($dayOfMonth < 1) || ($dayOfMonth > 31),
             new \Exception('Wrong day of month')
         );
 
@@ -27,6 +28,8 @@ trait HasExpressionGenerator
         $this->expression = [
             '*', '*', 'LAST_DAY_OF_MONTH'
         ];
+
+        return $this;
     }
 
     public function weekly($dayOfWeek)
@@ -69,6 +72,8 @@ trait HasExpressionGenerator
         $this->expression = [
             '*', '*', '*', '*', '1-5'
         ];
+
+        return $this;
     }
 
     public function weekends()
@@ -76,6 +81,8 @@ trait HasExpressionGenerator
         $this->expression = [
             '*', '*', '*', '*', '6,0'
         ];
+
+        return $this;
     }
 
     public function daily($time)

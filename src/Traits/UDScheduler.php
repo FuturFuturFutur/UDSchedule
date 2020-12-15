@@ -15,6 +15,6 @@ trait UDScheduler
 
     public function udScheduledBySchedulable(string $schedulable)
     {
-        return $this->udScheduled()->where('schedulable', $schedulable)->get();
+        return $this->udScheduled()->where('schedulable', $schedulable)->first();
     }
 }

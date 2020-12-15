@@ -16,7 +16,7 @@ class UDScheduleBuilder implements UDScheduleBuilderInterface
     private $schedulable;
 
     protected $expression = ['*', '*', '*', '*', '*'];
-    protected $timezone;
+    protected $timezone = null;
 
     public function forScheduler(UDSchedulerInterface $scheduler): UDScheduleBuilderInterface
     {
@@ -40,7 +40,7 @@ class UDScheduleBuilder implements UDScheduleBuilderInterface
         $this->scheduler->udScheduled()->updateOrCreate([
             'schedulable' => $this->schedulable,
         ], [
-            'expression' => $this->expression,
+            'expression' => implode(' ', $this->expression),
             'timezone' => $this->timezone,
         ]);
     }
