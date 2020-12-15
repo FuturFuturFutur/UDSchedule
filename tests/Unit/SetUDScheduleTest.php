@@ -48,6 +48,19 @@ class SetUDScheduleTest extends TestCase
         $this->assertTrue($scheduler->udScheduledBySchedulable(UDScheduledObject::class)->expression === '00 12 LAST_DAY_OF_MONTH');
     }
 
+    public function testSetUDScheduleCustomExpression()
+    {
+        $scheduler = Scheduler::first();
+
+        UDSchedule::schedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->custom('* * * * *')
+            ->set();
+
+        $this->assertTrue($scheduler->udScheduledBySchedulable(UDScheduledObject::class)->expression === '* * * * *');
+    }
+
     public function testSetUDScheduleMonthlyWithWrongValue()
     {
         $scheduler = Scheduler::first();
