@@ -1,6 +1,7 @@
 ### UDSchedule
 User Definable Schedule is the laravel package which allows you to create user defined schedule tasks.
 ```Futur with love <3```
+
 ## Installation
 Install via composer <br>
 ```composer require futur/udschedule```
@@ -43,21 +44,26 @@ class Report <u><b>implements UDSchedulable</b></u>
 </pre>
 
 ## Usage
-After installation, everything you need is setting user defined schedules with
+After installation, everything you need is setting user defined schedules using UDSchedule facade:
 ```
-$scheduler->setUDSchedule(string $schedulable, string $type, string $value = null);
+UDSchedule::setSchedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->...;
 ``` 
 
-Available schedule types:<br>
-    - <b>monthly</b> as a type and <b>any day of a month</b> as a value<br>
-    ```
-    $scheduler->setUDSchedule(string $schedulable, 'monthly', 3);
-    ``` <br>
-    - <b>weekly</b> as a type and <b>any day of a week</b> as a value, where 0 is for Sunday and 6 is for Saturday<br>
-    ```
-    $scheduler->setUDSchedule(string $schedulable, 'weekly', 0);
-    ``` <br>
-    - <b>last_day_of_month</b> as a type without value<br>
-    ```
-    $scheduler->setUDSchedule(string $schedulable, 'last_day_of_month');
-    ``` <br>
+Available schedule types:
+- <b>monthly</b> as a type and <b>any day of a month</b> as a value<br>
+```
+UDSchedule::setSchedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->monthly(23);
+``` 
+- <b>weekly</b> as a type and <b>any day of a week</b> as a value, where 0 is for Sunday and 6 is for Saturday<br>
+```
+UDSchedule::setSchedule()
+            ->forScheduler($scheduler)
+            ->withSchedulable(UDScheduledObject::class)
+            ->weekly(5);
+``` 
