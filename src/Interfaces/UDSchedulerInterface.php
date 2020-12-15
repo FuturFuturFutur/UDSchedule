@@ -6,5 +6,7 @@ namespace Futur\UDSchedule\Interfaces;
 
 interface UDSchedulerInterface
 {
-    public function udScheduledExpressions();
+    public function udScheduled();
+
+    public function udScheduledBySchedulable(string $schedulable);
 }
