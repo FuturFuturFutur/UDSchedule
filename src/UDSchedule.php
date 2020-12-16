@@ -5,6 +5,7 @@ namespace Futur\UDSchedule;
 
 use Futur\UDSchedule\Interfaces\UDScheduleBuilderInterface;
 use Futur\UDSchedule\Interfaces\UDScheduleListenerInterface;
+use Futur\UDSchedule\Services\UDSchedulerExpressionInterpreter;
 
 class UDSchedule
 {
@@ -35,5 +36,10 @@ class UDSchedule
     public function listenScheduled()
     {
         $this->UDScheduleListener->listen();
+    }
+
+    public function interpretExpression($expression)
+    {
+        return UDSchedulerExpressionInterpreter::interpreter($expression);
     }
 }
