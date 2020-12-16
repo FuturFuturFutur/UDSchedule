@@ -19,7 +19,7 @@ class UDSchedulerExpressionInterpreter
         }elseif($elements[4] !== '*'){
             if($elements[4] === '1-5'){
                 $export['type'] = 'weekdays';
-            }elseif ($elements[5] === '6,0'){
+            }elseif ($elements[4] === '6,0'){
                 $export['type'] = 'weekends';
             }else{
                 $export['type'] = 'weekly';
