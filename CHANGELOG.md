@@ -1,5 +1,7 @@
 ##Changelog
 
+#####16.12.2020 - 1.1.5
+    - Add udscheduled expressions interpreter
 #####15.12.2020 - 1.1.2
     - Remove expression generation logic to trait
     - Rename method of relation in scheduler trait

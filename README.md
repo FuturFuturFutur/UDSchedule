@@ -44,7 +44,8 @@ class Report <u><b>implements UDSchedulable</b></u>
 </pre>
 
 ## Usage
-After installation, everything you need is setting user defined schedules using UDSchedule facade:
+### Scheduling
+After installation, everything you need is call UDSchedule facade and define a scheduler and a schedulable with schedule type:
 ```
 UDSchedule::schedule()
             ->forScheduler($scheduler)
@@ -53,7 +54,7 @@ UDSchedule::schedule()
             ->set();
 ``` 
 
-Available schedule methods:
+Available schedule types:
 - <b>monthly</b> with <b>any day of a month</b> as a value<br>
 ```
 UDSchedule::schedule()
@@ -128,3 +129,22 @@ UDSchedule::schedule()
             ->timezone('MST')
             ->set();
 ``` 
+
+### Expression interpreter
+Sometimes it's needed to interpret expressions from udscheduled tasks to understandable look.
+You can do so using interpretExpression method of UDSchedule facade:
+```
+$scheduled = UDSchedule::interpretExpression(
+                $scheduler
+                    ->udScheduledBySchedulable(UDScheduledObject::class)
+                    ->expression
+            );
+```
+will return:
+```
+[
+    'type' => 'monthly',
+    'value' => '3',
+    'at' => '11:00'
+]
+```
