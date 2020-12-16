@@ -4,13 +4,12 @@ namespace Futur\UDSchedule\Models;
 
 use Cron\CronExpression;
 use Illuminate\Console\Scheduling\ManagesFrequencies;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 class UDScheduledExpression extends Model
 {
-    use HasFactory, ManagesFrequencies;
+    use ManagesFrequencies;
 
     protected $table = 'udscheduled_expressions';
 
