@@ -4,6 +4,8 @@
 namespace Futur\UDSchedule\Traits;
 
 
+use Futur\UDSchedule\Services\UDScheduleHelpers;
+
 trait HasExpressionGenerator
 {
     protected $expression = ['*', '*', '*', '*', '*'];
@@ -34,34 +36,8 @@ trait HasExpressionGenerator
 
     public function weekly($dayOfWeek)
     {
-        switch ($dayOfWeek){
-            case 'Sunday':
-                $dayOfWeek = 0;
-                break;
-            case 'Monday':
-                $dayOfWeek = 1;
-                break;
-            case 'Tuesday':
-                $dayOfWeek = 2;
-                break;
-            case 'Wednesday':
-                $dayOfWeek = 3;
-                break;
-            case 'Thursday':
-                $dayOfWeek = 4;
-                break;
-            case 'Friday':
-                $dayOfWeek = 5;
-                break;
-            case 'Saturday':
-                $dayOfWeek = 6;
-                break;
-            default:
-                throw new \Exception('Wrong day of week');
-        }
-
         $this->expression = [
-            '*', '*', '*', '*', $dayOfWeek
+            '*', '*', '*', '*', UDScheduleHelpers::getNumberByDayOfWeek($dayOfWeek)
         ];
 
         return $this;
